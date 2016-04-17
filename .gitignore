@@ -1,19 +1,569 @@
-# History files
-.Rhistory
-.Rapp.history
 
-# Session Data files
-.RData
+R version 3.2.5 (2016-04-14) -- "Very, Very Secure Dishes"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
 
-# Example code in package build process
-*-Ex.R
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
 
-# RStudio files
-.Rproj.user/
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
 
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
 
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
+[Workspace loaded from ~/.RData]
+
+> trainData <- read.csv("train.csv")
+> # Checking the dimension of the datadim(trainData)
+> # Checking the dimension of the data
+> dim(traindata)
+Error: object 'traindata' not found
+> dim(trainData)
+[1] 114321    133
+> #check the summary of the train data
+> summary(trainData)
+       ID             target             v1              v2        v3               v4       
+ Min.   :     3   Min.   :0.0000   Min.   : 0.00   Min.   : 0.00    :  3457   Min.   : 0.00  
+ 1st Qu.: 57280   1st Qu.:1.0000   1st Qu.: 0.91   1st Qu.: 5.32   A:   227   1st Qu.: 3.49  
+ Median :114189   Median :1.0000   Median : 1.47   Median : 7.02   B:    53   Median : 4.21  
+ Mean   :114229   Mean   :0.7612   Mean   : 1.63   Mean   : 7.46   C:110584   Mean   : 4.15  
+ 3rd Qu.:171206   3rd Qu.:1.0000   3rd Qu.: 2.14   3rd Qu.: 9.47              3rd Qu.: 4.83  
+ Max.   :228713   Max.   :1.0000   Max.   :20.00   Max.   :20.00              Max.   :20.00  
+                                   NA's   :49832   NA's   :49796              NA's   :49796  
+       v5              v6              v7              v8              v9       
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 7.61   1st Qu.: 2.07   1st Qu.: 2.10   1st Qu.: 0.09   1st Qu.: 7.85  
+ Median : 8.67   Median : 2.41   Median : 2.45   Median : 0.39   Median : 9.06  
+ Mean   : 8.74   Mean   : 2.44   Mean   : 2.48   Mean   : 1.50   Mean   : 9.03  
+ 3rd Qu.: 9.77   3rd Qu.: 2.78   3rd Qu.: 2.83   3rd Qu.: 1.63   3rd Qu.:10.23  
+ Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :48624   NA's   :49832   NA's   :49832   NA's   :48619   NA's   :49851  
+      v10              v11             v12              v13             v14           
+ Min.   : 0.000   Min.   : 0.00   Min.   : 0.000   Min.   : 0.00   Min.   :-0.000001  
+ 1st Qu.: 1.050   1st Qu.:15.00   1st Qu.: 6.322   1st Qu.: 3.07   1st Qu.:11.256017  
+ Median : 1.313   Median :15.50   Median : 6.613   Median : 3.59   Median :11.967825  
+ Mean   : 1.883   Mean   :15.45   Mean   : 6.881   Mean   : 3.80   Mean   :12.094279  
+ 3rd Qu.: 2.101   3rd Qu.:15.95   3rd Qu.: 7.020   3rd Qu.: 4.29   3rd Qu.:12.715774  
+ Max.   :18.534   Max.   :20.00   Max.   :18.711   Max.   :20.00   Max.   :20.000000  
+ NA's   :84       NA's   :49836   NA's   :86       NA's   :49832   NA's   :4          
+      v15             v16             v17             v18             v19             v20       
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 1.52  
+ 1st Qu.: 1.61   1st Qu.: 3.86   1st Qu.: 2.70   1st Qu.: 0.51   1st Qu.: 0.17   1st Qu.:17.33  
+ Median : 1.99   Median : 4.93   Median : 3.55   Median : 0.77   Median : 0.20   Median :18.04  
+ Mean   : 2.08   Mean   : 4.92   Mean   : 3.83   Mean   : 0.84   Mean   : 0.22   Mean   :17.77  
+ 3rd Qu.: 2.42   3rd Qu.: 5.96   3rd Qu.: 4.51   3rd Qu.: 1.07   3rd Qu.: 0.24   3rd Qu.:18.54  
+ Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :49836   NA's   :49895   NA's   :49796   NA's   :49832   NA's   :49843   NA's   :49840  
+      v21               v22              v23        v24            v25             v26       
+ Min.   : 0.1062   AGDF   :  2386   Min.   : 0.00   A: 3789   Min.   : 0.04   Min.   : 0.00  
+ 1st Qu.: 6.4155   YGJ    :  2119   1st Qu.: 0.00   B: 8150   1st Qu.: 0.15   1st Qu.: 1.51  
+ Median : 7.0454   QKI    :   668   Median : 0.00   C:20872   Median : 0.47   Median : 1.83  
+ Mean   : 7.0297   PWR    :   649   Mean   : 1.09   D:26333   Mean   : 1.70   Mean   : 1.88  
+ 3rd Qu.: 7.6706          :   500   3rd Qu.: 0.00   E:55177   3rd Qu.: 1.95   3rd Qu.: 2.18  
+ Max.   :19.2961   HZE    :   423   Max.   :20.00             Max.   :20.00   Max.   :20.00  
+ NA's   :611       (Other):107576   NA's   :50675             NA's   :48619   NA's   :49832  
+      v27             v28             v29             v30        v31            v32       
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00          :60110    : 3457   Min.   : 0.00  
+ 1st Qu.: 2.20   1st Qu.: 3.49   1st Qu.: 7.43   C      :32178   A:88347   1st Qu.: 1.26  
+ Median : 2.67   Median : 5.04   Median : 8.30   G      : 8728   B:18947   Median : 1.56  
+ Mean   : 2.74   Mean   : 5.09   Mean   : 8.21   D      : 5225   C: 3570   Mean   : 1.62  
+ 3rd Qu.: 3.22   3rd Qu.: 6.57   3rd Qu.: 9.09   E      : 2973             3rd Qu.: 1.90  
+ Max.   :20.00   Max.   :19.85   Max.   :20.00   F      : 2589             Max.   :17.56  
+ NA's   :49832   NA's   :49832   NA's   :49832   (Other): 2518             NA's   :49832  
+      v33             v34              v35             v36             v37       
+ Min.   : 0.00   Min.   : 0.000   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 1.47   1st Qu.: 5.054   1st Qu.: 7.25   1st Qu.:11.77   1st Qu.: 0.40  
+ Median : 1.95   Median : 6.537   Median : 8.07   Median :13.77   Median : 0.64  
+ Mean   : 2.16   Mean   : 6.406   Mean   : 8.12   Mean   :13.38   Mean   : 0.74  
+ 3rd Qu.: 2.63   3rd Qu.: 7.703   3rd Qu.: 8.94   3rd Qu.:15.32   3rd Qu.: 0.95  
+ Max.   :20.00   Max.   :20.000   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :49832   NA's   :111      NA's   :49832   NA's   :48624   NA's   :49843  
+      v38                v39             v40              v41             v42       
+ Min.   : 0.00000   Min.   : 0.00   Min.   : 0.000   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 0.00000   1st Qu.: 0.13   1st Qu.: 8.408   1st Qu.: 6.54   1st Qu.:12.34  
+ Median : 0.00000   Median : 0.38   Median :10.334   Median : 7.20   Median :12.93  
+ Mean   : 0.09093   Mean   : 1.24   Mean   :10.466   Mean   : 7.18   Mean   :12.92  
+ 3rd Qu.: 0.00000   3rd Qu.: 1.19   3rd Qu.:12.765   3rd Qu.: 7.83   3rd Qu.:13.49  
+ Max.   :12.00000   Max.   :19.92   Max.   :20.000   Max.   :20.00   Max.   :20.00  
+                    NA's   :49836   NA's   :111      NA's   :49832   NA's   :49832  
+      v43             v44             v45             v46             v47             v48       
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.07   C      :55425   Min.   : 0.00  
+ 1st Qu.: 1.79   1st Qu.: 9.58   1st Qu.: 7.83   1st Qu.: 0.12   I      :39071   1st Qu.:11.22  
+ Median : 2.15   Median :10.78   Median : 9.16   Median : 0.44   E      : 5301   Median :12.41  
+ Mean   : 2.22   Mean   :10.80   Mean   : 9.14   Mean   : 1.63   F      : 4322   Mean   :12.54  
+ 3rd Qu.: 2.56   3rd Qu.:12.02   3rd Qu.:10.42   3rd Qu.: 1.82   G      : 3946   3rd Qu.:13.78  
+ Max.   :20.00   Max.   :19.83   Max.   :20.00   Max.   :20.00   D      : 3157   Max.   :20.00  
+ NA's   :49836   NA's   :49796   NA's   :49832   NA's   :48619   (Other): 3099   NA's   :49796  
+      v49             v50               v51             v52             v53       
+ Min.   : 0.00   Min.   : 0.0000   Min.   : 0.00   J      :11103   Min.   : 0.00  
+ 1st Qu.: 7.47   1st Qu.: 0.6588   1st Qu.: 5.60   I      :10260   1st Qu.:15.28  
+ Median : 8.02   Median : 1.2119   Median : 7.13   F      : 9806   Median :15.77  
+ Mean   : 8.02   Mean   : 1.5043   Mean   : 7.20   C      : 9681   Mean   :15.71  
+ 3rd Qu.: 8.56   3rd Qu.: 2.0072   3rd Qu.: 8.64   D      : 9607   3rd Qu.:16.22  
+ Max.   :20.00   Max.   :20.0000   Max.   :20.00   L      : 9578   Max.   :20.00  
+ NA's   :49832   NA's   :86        NA's   :50678   (Other):54286   NA's   :49836  
+      v54             v55             v56             v57             v58             v59       
+ Min.   : 0.01   Min.   : 0.00   BW     :11351   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 0.09   1st Qu.: 0.98   DI     :10256   1st Qu.: 3.65   1st Qu.: 1.50   1st Qu.: 9.06  
+ Median : 0.31   Median : 1.37   AS     : 8832   Median : 4.07   Median : 5.33   Median :10.54  
+ Mean   : 1.25   Mean   : 1.56   BZ     : 7174   Mean   : 4.08   Mean   : 7.70   Mean   :10.59  
+ 3rd Qu.: 1.41   3rd Qu.: 1.94          : 6882   3rd Qu.: 4.49   3rd Qu.:13.96   3rd Qu.:12.03  
+ Max.   :20.00   Max.   :20.00   AW     : 6369   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :48619   NA's   :49832   (Other):63457   NA's   :49832   NA's   :49836   NA's   :49796  
+      v60             v61             v62             v63             v64             v65       
+ Min.   : 0.00   Min.   : 0.00   Min.   :0.000   Min.   : 0.05   Min.   : 0.00   Min.   : 0.66  
+ 1st Qu.: 1.36   1st Qu.:13.60   1st Qu.:1.000   1st Qu.: 0.14   1st Qu.: 4.79   1st Qu.:15.03  
+ Median : 1.67   Median :15.08   Median :1.000   Median : 0.46   Median : 6.11   Median :16.26  
+ Mean   : 1.71   Mean   :14.58   Mean   :1.031   Mean   : 1.69   Mean   : 6.34   Mean   :15.85  
+ 3rd Qu.: 2.01   3rd Qu.:16.11   3rd Qu.:1.000   3rd Qu.: 1.85   3rd Qu.: 7.52   3rd Qu.:17.16  
+ Max.   :20.00   Max.   :18.85   Max.   :7.000   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :49832   NA's   :49796                   NA's   :48619   NA's   :49796   NA's   :49840  
+ v66            v67             v68             v69             v70             v71       
+ A:70353   Min.   : 0.00   Min.   : 1.50   Min.   : 0.00   Min.   : 0.43   F      :75094  
+ B:18264   1st Qu.: 8.58   1st Qu.:17.08   1st Qu.: 8.39   1st Qu.:10.80   B      :30255  
+ C:25704   Median : 9.31   Median :18.27   Median : 9.52   Median :12.49   C      : 8947  
+           Mean   : 9.29   Mean   :17.56   Mean   : 9.45   Mean   :12.27   I      :   16  
+           3rd Qu.: 9.99   3rd Qu.:18.91   3rd Qu.:10.54   3rd Qu.:13.99   G      :    5  
+           Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :19.82   A      :    1  
+           NA's   :49832   NA's   :49836   NA's   :49895   NA's   :48636   (Other):    3  
+      v72              v73        v74        v75            v76             v77       
+ Min.   : 0.000   Min.   : 0.00   A:    45   A:   18   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 1.000   1st Qu.: 1.90   B:113560   B:39192   1st Qu.: 1.63   1st Qu.: 6.50  
+ Median : 1.000   Median : 2.33   C:   716   C:   24   Median : 2.17   Median : 7.38  
+ Mean   : 1.432   Mean   : 2.43              D:75087   Mean   : 2.41   Mean   : 7.31  
+ 3rd Qu.: 2.000   3rd Qu.: 2.85                        3rd Qu.: 2.81   3rd Qu.: 8.16  
+ Max.   :12.000   Max.   :20.00                        Max.   :20.00   Max.   :15.97  
+                  NA's   :49836                        NA's   :49796   NA's   :49832  
+      v78             v79             v80             v81             v82             v83       
+ Min.   : 0.00   C      :34561   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.:12.31   B      :25801   1st Qu.: 1.45   1st Qu.: 5.98   1st Qu.: 3.39   1st Qu.: 1.43  
+ Median :13.33   E      :25257   Median : 2.09   Median : 7.52   Median : 3.69   Median : 1.94  
+ Mean   :13.33   D      : 5302   Mean   : 2.21   Mean   : 7.29   Mean   : 6.21   Mean   : 2.17  
+ 3rd Qu.:14.39   I      : 4561   3rd Qu.: 2.86   3rd Qu.: 8.78   3rd Qu.: 8.79   3rd Qu.: 2.67  
+ Max.   :20.00   K      : 4308   Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :49895   (Other):14531   NA's   :49851   NA's   :48624   NA's   :48624   NA's   :49832  
+      v84             v85             v86             v87             v88             v89       
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.87   Min.   : 0.00   Min.   : 0.02  
+ 1st Qu.: 0.96   1st Qu.: 1.84   1st Qu.: 0.94   1st Qu.: 8.06   1st Qu.: 1.18   1st Qu.: 0.10  
+ Median : 1.42   Median : 2.59   Median : 1.16   Median :10.00   Median : 1.76   Median : 0.33  
+ Mean   : 1.61   Mean   : 2.82   Mean   : 1.22   Mean   :10.18   Mean   : 1.92   Mean   : 1.52  
+ 3rd Qu.: 2.07   3rd Qu.: 3.57   3rd Qu.: 1.42   3rd Qu.:12.23   3rd Qu.: 2.46   3rd Qu.: 1.75  
+ Max.   :20.00   Max.   :20.00   Max.   :17.56   Max.   :19.84   Max.   :20.00   Max.   :20.00  
+ NA's   :49832   NA's   :50682   NA's   :49832   NA's   :48663   NA's   :49832   NA's   :48619  
+      v90             v91             v92             v93             v94             v95       
+ Min.   :0.00    A      :27079   Min.   :0.00    Min.   : 0.00   Min.   : 0.00   Min.   :0.00   
+ 1st Qu.:0.86    G      :24545   1st Qu.:0.44    1st Qu.: 4.55   1st Qu.: 3.33   1st Qu.:0.50   
+ Median :0.97    C      :23157   Median :0.54    Median : 5.30   Median : 3.74   Median :0.62   
+ Mean   :0.97    B      :22683   Mean   :0.58    Mean   : 5.48   Mean   : 3.85   Mean   :0.67   
+ 3rd Qu.:1.06    F      :13418   3rd Qu.:0.68    3rd Qu.: 6.22   3rd Qu.: 4.23   3rd Qu.:0.77   
+ Max.   :6.31    E      : 3206   Max.   :8.92    Max.   :20.00   Max.   :19.02   Max.   :9.07   
+ NA's   :49836   (Other):  233   NA's   :49843   NA's   :49832   NA's   :49832   NA's   :49843  
+      v96             v97             v98             v99             v100            v101      
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 5.76   1st Qu.: 6.32   1st Qu.: 6.13   1st Qu.: 0.93   1st Qu.: 5.75   1st Qu.: 5.26  
+ Median : 6.51   Median : 7.45   Median : 7.64   Median : 1.24   Median :14.48   Median : 6.62  
+ Mean   : 6.46   Mean   : 7.62   Mean   : 7.67   Mean   : 1.25   Mean   :12.09   Mean   : 6.87  
+ 3rd Qu.: 7.23   3rd Qu.: 8.78   3rd Qu.: 9.06   3rd Qu.: 1.55   3rd Qu.:18.32   3rd Qu.: 8.24  
+ Max.   :20.00   Max.   :20.00   Max.   :19.06   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :49832   NA's   :49843   NA's   :48654   NA's   :49832   NA's   :49836   NA's   :49796  
+      v102            v103            v104            v105            v106            v107      
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   E      :27079  
+ 1st Qu.: 1.79   1st Qu.: 4.50   1st Qu.: 2.14   1st Qu.: 0.06   1st Qu.:10.05   C      :24545  
+ Median : 2.46   Median : 5.13   Median : 2.51   Median : 0.24   Median :12.09   D      :23157  
+ Mean   : 2.89   Mean   : 5.30   Mean   : 2.64   Mean   : 1.08   Mean   :11.79   B      :22683  
+ 3rd Qu.: 3.41   3rd Qu.: 5.87   3rd Qu.: 2.95   3rd Qu.: 1.02   3rd Qu.:13.77   A      :13418  
+ Max.   :20.00   Max.   :18.78   Max.   :20.00   Max.   :20.00   Max.   :20.00   F      : 3206  
+ NA's   :51316   NA's   :49832   NA's   :49832   NA's   :48658   NA's   :49796   (Other):  233  
+      v108            v109       v110           v111            v112            v113      
+ Min.   : 0.00   Min.   : 0.00   A:55688   Min.   : 0.00   F      :21671          :55304  
+ 1st Qu.: 1.53   1st Qu.: 1.84   B:55426   1st Qu.: 2.32   I      :10224   G      :16252  
+ Median : 1.98   Median : 3.09   C: 3207   Median : 3.11   A      : 9545   M      : 7374  
+ Mean   : 2.15   Mean   : 4.18             Mean   : 3.37   N      : 9086   AC     : 5956  
+ 3rd Qu.: 2.54   3rd Qu.: 5.15             3rd Qu.: 4.12   D      : 7327   AF     : 3568  
+ Max.   :20.00   Max.   :20.00             Max.   :20.00   H      : 5651   I      : 2605  
+ NA's   :48624   NA's   :48624             NA's   :49832   (Other):50817   (Other):23262  
+      v114            v115            v116            v117            v118            v119      
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.:12.00   1st Qu.: 9.46   1st Qu.: 1.85   1st Qu.: 5.76   1st Qu.: 6.98   1st Qu.: 0.32  
+ Median :14.04   Median :10.48   Median : 2.22   Median : 8.07   Median : 8.14   Median : 1.46  
+ Mean   :13.57   Mean   :10.55   Mean   : 2.29   Mean   : 8.30   Mean   : 8.36   Mean   : 3.17  
+ 3rd Qu.:15.37   3rd Qu.:11.61   3rd Qu.: 2.65   3rd Qu.:10.50   3rd Qu.: 9.57   3rd Qu.: 4.17  
+ Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00   Max.   :20.00  
+ NA's   :30      NA's   :49895   NA's   :49836   NA's   :48624   NA's   :49843   NA's   :50680  
+      v120            v121            v122            v123            v124            v125      
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.02   Min.   : 0.00   BM     : 5759  
+ 1st Qu.: 0.78   1st Qu.: 1.79   1st Qu.: 5.65   1st Qu.: 1.96   1st Qu.: 0.02   AK     : 5337  
+ Median : 1.14   Median : 2.44   Median : 6.75   Median : 2.74   Median : 0.14   BJ     : 4465  
+ Mean   : 1.29   Mean   : 2.74   Mean   : 6.82   Mean   : 3.55   Mean   : 0.92   CG     : 3826  
+ 3rd Qu.: 1.65   3rd Qu.: 3.38   3rd Qu.: 7.91   3rd Qu.: 4.08   3rd Qu.: 0.87   AP     : 3410  
+ Max.   :10.39   Max.   :20.00   Max.   :20.00   Max.   :19.69   Max.   :20.00   BY     : 3311  
+ NA's   :49836   NA's   :49840   NA's   :49851   NA's   :50678   NA's   :48619   (Other):88213  
+      v126            v127            v128            v129              v130      
+ Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.0000   Min.   : 0.00  
+ 1st Qu.: 1.42   1st Qu.: 2.10   1st Qu.: 1.39   1st Qu.: 0.0000   1st Qu.: 1.11  
+ Median : 1.61   Median : 2.96   Median : 1.80   Median : 0.0000   Median : 1.56  
+ Mean   : 1.67   Mean   : 3.24   Mean   : 2.03   Mean   : 0.3101   Mean   : 1.93  
+ 3rd Qu.: 1.84   3rd Qu.: 4.11   3rd Qu.: 2.39   3rd Qu.: 0.0000   3rd Qu.: 2.33  
+ Max.   :15.63   Max.   :20.00   Max.   :20.00   Max.   :11.0000   Max.   :20.00  
+ NA's   :49832   NA's   :49832   NA's   :48624                     NA's   :49843  
+      v131      
+ Min.   : 0.00  
+ 1st Qu.: 1.01  
+ Median : 1.59  
+ Mean   : 1.74  
+ 3rd Qu.: 2.26  
+ Max.   :20.00  
+ NA's   :49895  
+> #we can see there are a lot og missing values in here
+> #Lets check who of them have the missing values and in what quantity
+> totalna <- sapply(trainData, function(x) sum(is.na(x)))
+> 
+> totalna
+    ID target     v1     v2     v3     v4     v5     v6     v7     v8     v9    v10    v11 
+     0      0  49832  49796      0  49796  48624  49832  49832  48619  49851     84  49836 
+   v12    v13    v14    v15    v16    v17    v18    v19    v20    v21    v22    v23    v24 
+    86  49832      4  49836  49895  49796  49832  49843  49840    611      0  50675      0 
+   v25    v26    v27    v28    v29    v30    v31    v32    v33    v34    v35    v36    v37 
+ 48619  49832  49832  49832  49832      0      0  49832  49832    111  49832  48624  49843 
+   v38    v39    v40    v41    v42    v43    v44    v45    v46    v47    v48    v49    v50 
+     0  49836    111  49832  49832  49836  49796  49832  48619      0  49796  49832     86 
+   v51    v52    v53    v54    v55    v56    v57    v58    v59    v60    v61    v62    v63 
+ 50678      0  49836  48619  49832      0  49832  49836  49796  49832  49796      0  48619 
+   v64    v65    v66    v67    v68    v69    v70    v71    v72    v73    v74    v75    v76 
+ 49796  49840      0  49832  49836  49895  48636      0      0  49836      0      0  49796 
+   v77    v78    v79    v80    v81    v82    v83    v84    v85    v86    v87    v88    v89 
+ 49832  49895      0  49851  48624  48624  49832  49832  50682  49832  48663  49832  48619 
+   v90    v91    v92    v93    v94    v95    v96    v97    v98    v99   v100   v101   v102 
+ 49836      0  49843  49832  49832  49843  49832  49843  48654  49832  49836  49796  51316 
+  v103   v104   v105   v106   v107   v108   v109   v110   v111   v112   v113   v114   v115 
+ 49832  49832  48658  49796      0  48624  48624      0  49832      0      0     30  49895 
+  v116   v117   v118   v119   v120   v121   v122   v123   v124   v125   v126   v127   v128 
+ 49836  48624  49843  50680  49836  49840  49851  50678  48619      0  49832  49832  48624 
+  v129   v130   v131 
+     0  49843  49895 
+> # here lots of data is missing in most of the variables 
+> library(mice)
+Loading required package: Rcpp
+mice 2.25 2015-11-09
+> library(VIM)
+Loading required package: colorspace
+Loading required package: grid
+Loading required package: data.table
+data.table 1.9.6  For help type ?data.table or https://github.com/Rdatatable/data.table/wiki
+The fastest way to learn (by data.table authors): https://www.datacamp.com/courses/data-analysis-the-data-table-way
+VIM is ready to use. 
+ Since version 4.0.0 the GUI is in its own package VIMGUI.
+
+          Please use the package to use the new (and old) GUI.
+
+Suggestions and bug-reports can be submitted at: https://github.com/alexkowa/VIM/issues
+
+Attaching package: ‘VIM’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+> missers <- md.pattern(traindata[, -c(1:2)])
+Error in md.pattern(traindata[, -c(1:2)]) : object 'traindata' not found
+> missers <- md.pattern(trainData[, -c(1:2)])
+> #Checking the pattern of the missing values, ID and target are removed from the pattern as ID wouldnt be considered as an independent variable
+> miceplot1 <- aggr(trainData[, -c(1:2)], col=c("dodgerblue","dimgray"),
++                   numbers=TRUE, combined=TRUE, varheight=FALSE, border="gray50",
++                   sortVars=TRUE, sortCombs=FALSE, ylabs=c("Missing Data Pattern"),
++                   labels=names(train[-c(1:2)]), cex.axis=.7)
+
+ Variables sorted by number of missings: 
+ Variable Count
+     v103 51316
+      v86 50682
+     v120 50680
+      v52 50678
+     v124 50678
+      v24 50675
+      v17 49895
+      v70 49895
+      v79 49895
+     v116 49895
+       v2 49895
+      v10 49851
+      v81 49851
+     v123 49851
+      v20 49843
+      v38 49843
+      v93 49843
+      v96 49843
+      v98 49843
+     v119 49843
+     v131 49843
+      v21 49840
+      v66 49840
+     v122 49840
+      v12 49836
+      v16 49836
+      v40 49836
+      v44 49836
+      v54 49836
+      v59 49836
+      v69 49836
+      v74 49836
+      v91 49836
+     v101 49836
+     v117 49836
+     v121 49836
+       v2 49832
+       v7 49832
+       v8 49832
+      v14 49832
+      v19 49832
+      v27 49832
+      v28 49832
+      v29 49832
+      v30 49832
+      v33 49832
+      v34 49832
+      v36 49832
+      v42 49832
+      v43 49832
+      v46 49832
+      v50 49832
+      v56 49832
+      v58 49832
+      v61 49832
+      v68 49832
+      v78 49832
+      v84 49832
+      v85 49832
+      v87 49832
+      v89 49832
+      v94 49832
+      v95 49832
+      v97 49832
+     v100 49832
+     v104 49832
+     v105 49832
+     v112 49832
+     v127 49832
+     v128 49832
+       v3 49796
+       v5 49796
+      v18 49796
+      v45 49796
+      v49 49796
+      v60 49796
+      v62 49796
+      v65 49796
+      v77 49796
+     v102 49796
+     v107 49796
+      v88 48663
+     v106 48658
+      v99 48654
+      v71 48636
+       v6 48624
+      v37 48624
+      v82 48624
+      v83 48624
+     v109 48624
+     v110 48624
+     v118 48624
+     v129 48624
+       v9 48619
+      v26 48619
+      v47 48619
+      v55 48619
+      v64 48619
+      v90 48619
+     v125 48619
+      v22   611
+      v35   111
+      v41   111
+      v13    86
+      v51    86
+      v11    84
+     v115    30
+      v15     4
+       v4     0
+      v23     0
+      v25     0
+      v31     0
+      v32     0
+      v39     0
+      v48     0
+      v53     0
+      v57     0
+      v63     0
+      v67     0
+      v72     0
+      v73     0
+      v75     0
+      v76     0
+      v80     0
+      v92     0
+     v108     0
+     v111     0
+     v113     0
+     v114     0
+     v126     0
+     v130     0
+Warning messages:
+1: In ifelse(is.na(x), 1, 0) :
+  Reached total allocation of 2047Mb: see help(memory.size)
+2: In ifelse(is.na(x), 1, 0) :
+  Reached total allocation of 2047Mb: see help(memory.size)
+3: In aperm.default(X, c(s.call, s.ans)) :
+  Reached total allocation of 2047Mb: see help(memory.size)
+4: In aperm.default(X, c(s.call, s.ans)) :
+  Reached total allocation of 2047Mb: see help(memory.size)
+5: In plot.aggr(res, ...) :
+  not enough vertical space to display frequencies (too many combinations)
+> numlevels <- sapply(trainData, function(x) length(unique(x)))
+> numlevels
+    ID target     v1     v2     v3     v4     v5     v6     v7     v8     v9    v10    v11 
+114321      2  64488  64525      4  64525  65672  64488  64490  65689  64452 112486  64478 
+   v12    v13    v14    v15    v16    v17    v18    v19    v20    v21    v22    v23    v24 
+114234  64489 110473  64482  64415  64526  64490  64479  64470 113710  18211  63639      5 
+   v25    v26    v27    v28    v29    v30    v31    v32    v33    v34    v35    v36    v37 
+ 65680  64490  64490  64483  64488      8      4  64489  64490 114210  64490  65610  64475 
+   v38    v39    v40    v41    v42    v43    v44    v45    v46    v47    v48    v49    v50 
+    12  64485 114193  64489  64473  64485  64521  64487  65698     10  64520  64488 114225 
+   v51    v52    v53    v54    v55    v56    v57    v58    v59    v60    v61    v62    v63 
+ 63638     13  64470  65695  64489    123  64489  64483  64525  64489  64520      8  65682 
+   v64    v65    v66    v67    v68    v69    v70    v71    v72    v73    v74    v75    v76 
+ 64525  64473      3  64488  64475  64333  65632      9     13  64485      3      4  64526 
+   v77    v78    v79    v80    v81    v82    v83    v84    v85    v86    v87    v88    v89 
+ 64490  64266     18  64467  65686  65664  64490  64488  63638  64490  65631  64490  65687 
+   v90    v91    v92    v93    v94    v95    v96    v97    v98    v99   v100   v101   v102 
+ 64485      8  64479  64490  64490  64479  64490  64471  65657  64489  64472  64526  62987 
+  v103   v104   v105   v106   v107   v108   v109   v110   v111   v112   v113   v114   v115 
+ 64490  64490  65659  64522      8  65688  65674      3  64487     23     37 114268  64254 
+  v116   v117   v118   v119   v120   v121   v122   v123   v124   v125   v126   v127   v128 
+ 64486  65663  64471  63639  64485  64481  64462  63642  65692     91  64488  64489  65688 
+  v129   v130   v131 
+    10  64477  64415 
+> #assuming that all columns that have less than 10 unique levels are categorical-- I'll 
+> #assign that to catvars to store the columns that I know for a fact are categorical
+> catvars <- numlevels[numlevels<10]
+> catvars
+target     v3    v24    v30    v31    v62    v66    v71    v74    v75    v91   v107   v110 
+     2      4      5      8      4      8      3      9      3      4      8      8      3 
+> # There might be some variables which might have more number of levels but still #categorical I'll use this next query to systematically sort through the variables that have a 
+> #higher number of levels but might still be categorical
+> cats <- numlevels[numlevels >=10 & numlevels < 50]
+> cats
+ v38  v47  v52  v72  v79 v112 v113 v129 
+  12   10   13   13   18   23   37   10 
+> 
+> 
+> 
+> #I repeated the step above along with a quick check (levels(as.factor(var_to_check))) and came up with below
+> catvars <- numlevels[numlevels<150]
+> catvars
+target     v3    v24    v30    v31    v38    v47    v52    v56    v62    v66    v71    v72 
+     2      4      5      8      4     12     10     13    123      8      3      9     13 
+   v74    v75    v79    v91   v107   v110   v112   v113   v125   v129 
+     3      4     18      8      8      3     23     37     91     10 
+> 
+> #quick check to make sure there aren't any more above 150, let's set the threshold at #300
+> cats <- numlevels[numlevels >=150 & numlevels <300]
+> cats
+named integer(0)
+> #I'll do the same for numerical variables just for convenience if I need to refer to #them later
+> #the numlevels != 114321 just omits the ID column
+> numvars <- numlevels[numlevels > 150 & numlevels != 114321]
+> numvars
+    v1     v2     v4     v5     v6     v7     v8     v9    v10    v11    v12    v13    v14 
+ 64488  64525  64525  65672  64488  64490  65689  64452 112486  64478 114234  64489 110473 
+   v15    v16    v17    v18    v19    v20    v21    v22    v23    v25    v26    v27    v28 
+ 64482  64415  64526  64490  64479  64470 113710  18211  63639  65680  64490  64490  64483 
+   v29    v32    v33    v34    v35    v36    v37    v39    v40    v41    v42    v43    v44 
+ 64488  64489  64490 114210  64490  65610  64475  64485 114193  64489  64473  64485  64521 
+   v45    v46    v48    v49    v50    v51    v53    v54    v55    v57    v58    v59    v60 
+ 64487  65698  64520  64488 114225  63638  64470  65695  64489  64489  64483  64525  64489 
+   v61    v63    v64    v65    v67    v68    v69    v70    v73    v76    v77    v78    v80 
+ 64520  65682  64525  64473  64488  64475  64333  65632  64485  64526  64490  64266  64467 
+   v81    v82    v83    v84    v85    v86    v87    v88    v89    v90    v92    v93    v94 
+ 65686  65664  64490  64488  63638  64490  65631  64490  65687  64485  64479  64490  64490 
+   v95    v96    v97    v98    v99   v100   v101   v102   v103   v104   v105   v106   v108 
+ 64479  64490  64471  65657  64489  64472  64526  62987  64490  64490  65659  64522  65688 
+  v109   v111   v114   v115   v116   v117   v118   v119   v120   v121   v122   v123   v124 
+ 65674  64487 114268  64254  64486  65663  64471  63639  64485  64481  64462  63642  65692 
+  v126   v127   v128   v130   v131 
+ 64488  64489  65688  64477  64415 
+> #I'll create frequency tables for the categorical variables that have less than 15 #levels 
+> 
+> 
+> #I'll create frequency tables for the categorical variables that have less than 15levels 
+> #just to keep the plots that will be created simpler/less cluttered
+> #NOTE: these tables omit/ignore NAs
+> v3count <- table(trainData$target, trainData$v3) 
+> v24count <- table(trainData$target, trainData$v24)
+> v30count <- table(trainData$target, trainData$v30)
+> v38count <- table(trainData$target, trainData$v38)
+> v47count <- table(trainData$target, trainData$v47)
+> v52count <- table(trainData$target, trainData$v52)
+> v62count <- table(trainData$target, trainData$v62)
+> v66count <- table(trainData$target, trainData$v66)
+> v71count <- table(trainData$target, trainData$v71)
+> v72count <- table(trainData$target, trainData$v72)
+> v74count <- table(trainData$target, trainData$v74)
+> v75count <- table(trainData$target, trainData$v75)
+> v91count <- table(trainData$target, trainData$v91)
+> v107count <- table(trainData$target, trainData$v107)
+> v110count <- table(trainData$target, trainData$v110)
+> v129count <- table(trainData$target, trainData$v129)
+> #I'll create frequency tables for the categorical variables that have less than 15levels 
+> #just to keep the plots that will be created simpler/less cluttered
+> #NOTE: these tables omit/ignore NAs
+> v3count <- table(trainData$target, trainData$v3) 
+> v24count <- table(trainData$target, trainData$v24)
+> v30count <- table(trainData$target, trainData$v30)
+> v38count <- table(trainData$target, trainData$v38)
+> v47count <- table(trainData$target, trainData$v47)
+> v52count <- table(trainData$target, trainData$v52)
+> v62count <- table(trainData$target, trainData$v62)
+> v66count <- table(trainData$target, trainData$v66)
+> v71count <- table(trainData$target, trainData$v71)
+> v72count <- table(trainData$target, trainData$v72)
+> v74count <- table(trainData$target, trainData$v74)
+> v75count <- table(trainData$target, trainData$v75)
+> v91count <- table(trainData$target, trainData$v91)
+> v107count <- table(trainData$target, trainData$v107)
+> v110count <- table(trainData$target, trainData$v110)
+> v129count <- table(trainData$target, trainData$v129)
+> #barplots of frequencies
+> par(mfrow=c(2,2))
+> barplot(v3count, ylab="#", main="v3count", legend.text=TRUE)
+> barplot(v24count, ylab="#", main="v24count", legend.text=TRUE)
+> barplot(v30count, ylab="#", main="v30count", legend.text=TRUE)
+> barplot(v38count, ylab="#", main="v38count", legend.text=TRUE)
+> #barplots of frequencies
+> par(mfrow=c(2,2))
+> barplot(v71count, ylab="#", main="v71count", legend.text=TRUE)
+> barplot(v72count, ylab="#", main="v72count", legend.text=TRUE)
+> barplot(v74count, ylab="#", main="v74count", legend.text=TRUE)
+> barplot(v75count, ylab="#", main="v75count", legend.text=TRUE)
+> #barplots of frequencies
+> par(mfrow=c(2,2))
+> barplot(v91count, ylab="#", main="v91count", legend.text=TRUE)
+> barplot(v107count, ylab="#", main="v107count", legend.text=TRUE)
+> barplot(v110count, ylab="#", main="v110count", legend.text=TRUE)
+> barplot(v129count, ylab="#", main="v129count", legend.text=TRUE)
+> # The v3 variable is a strong predictor for the target of 1 when the variable is equal to C
+> #The same can be said for the v38 variable, it seems to be a strong predictor of a target of 1 when the variable is equal to 0
+> #The v62 variable is pretty clear that a response of 1 for v62 probably corresponds to #a target value of 1.
+> # The v66 variable is also pretty clear that a response of A probably corresponds to a #target value of 1 as well.
+> #The v72 variable is pretty clear that a response of 2 would be a good predictor for whether or not the target variable is 1. Also note that the frequency data here is heavily skewed to the right
+> #The v74 variable with a response of 'B' is a very clear indicator of whether or not the target variable will be 1
+> #The v129 variable is pretty clear that a response of 0 for v129 correlates pretty strongly to a target response of 1 
+> #lets see the strong predictors
+> #v3 - C
+> # V62 - 1
+> # v66 - A
+> # v72 - 2 
+> # v74 - B
+> # v129 - 0
